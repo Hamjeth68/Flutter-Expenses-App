@@ -20,6 +20,8 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expenses App'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
             width: double.infinity,
@@ -30,6 +32,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Card(
+            color: Colors.red,
             child: Text('list of txt'),
           )
         ],
