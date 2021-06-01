@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//soon this will change to a StatefulWidget
 class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
@@ -46,7 +47,7 @@ class MyHomePage extends StatelessWidget {
             child: Card(
               color: Colors.blue,
               child: Text('Chart'),
-              elevation: 5,
+              elevation: 10,
             ),
           ),
           Column(
@@ -57,8 +58,8 @@ class MyHomePage extends StatelessWidget {
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.symmetric(
-                        vertical: 10,
-                        horizontal: 15,
+                        vertical: 15,
+                        horizontal: 20,
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.purple, width: 2),
@@ -82,6 +83,7 @@ class MyHomePage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        // Text(tx.)
                         Text(
                           tx.date.toString(),
                           style: TextStyle(

@@ -5,11 +5,13 @@ class Transaction {
   final String title;
   final double ammount;
   final DateTime date;
+  final String brandName;
 
   Transaction({
     required this.id,
     required this.title,
     required this.ammount,
     required this.date,
+    required this.brandName,
   });
 }
