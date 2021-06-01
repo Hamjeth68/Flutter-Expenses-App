@@ -20,17 +20,17 @@ class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
       id: '01id',
-      brandName: 'Levi',
-      title: 'LapTop',
-      date: DateTime.now(),
+      title: 'Gaming LapTop',
       ammount: 43.12,
+      date: DateTime.now(),
+      brandName: 'MSI',
     ),
     Transaction(
       id: '02d',
-      title: 'Levi',
+      title: 'Gaming Mouse',
       ammount: 20.7,
       date: DateTime.now(),
-      brandName: 'MSI',
+      brandName: 'ROG',
     )
   ];
 
@@ -56,7 +56,6 @@ class MyHomePage extends StatelessWidget {
             children: transactions.map((tx) {
               return Card(
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Container(
                       margin: EdgeInsets.symmetric(
@@ -68,7 +67,7 @@ class MyHomePage extends StatelessWidget {
                       ),
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        tx.ammount.toString(),
+                        '\$${tx.ammount}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -76,41 +75,32 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      margin: EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
-                      ),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            tx.title,
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            tx.date.toString(),
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          tx.brandName,
+                          tx.title.toString(),
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
-                        )
+                        ),
+                        Text(
+                          tx.brandName.toString(),
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          tx.date.toString(),
+                          style: TextStyle(
+                            color: Colors.blueGrey,
+                            fontSize: 11,
+                          ),
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               );
