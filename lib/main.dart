@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //my files
-import './transaction.dart ';
+import './transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,17 +19,19 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   final List<Transaction> transactions = [
     Transaction(
-      id: 't1',
-      title: 'new Shoes',
-      ammount: 69.99,
+      id: '01id',
+      brandName: 'Levi',
+      title: 'LapTop',
       date: DateTime.now(),
+      ammount: 43.12,
     ),
     Transaction(
-      id: 't2',
-      title: 'Weekly Groceries ',
-      ammount: 16.99,
+      id: '02d',
+      title: 'Levi',
+      ammount: 20.7,
       date: DateTime.now(),
-    ),
+      brandName: 'MSI',
+    )
   ];
 
   @override
@@ -74,23 +76,39 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        vertical: 5,
+                        horizontal: 10,
+                      ),
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            tx.title,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            tx.date.toString(),
+                            style: TextStyle(
+                              color: Colors.blueGrey,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Column(
                       children: <Widget>[
                         Text(
-                          tx.title,
+                          tx.brandName,
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        // Text(tx.)
-                        Text(
-                          tx.date.toString(),
-                          style: TextStyle(
-                            color: Colors.blueGrey,
-                            fontSize: 11,
-                          ),
-                        ),
+                        )
                       ],
                     )
                   ],
