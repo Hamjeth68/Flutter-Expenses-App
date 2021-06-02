@@ -34,6 +34,10 @@ class MyHomePage extends StatelessWidget {
     )
   ];
 
+  late String titleInput;
+  late String ammountInput;
+  late String brandInput;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,17 +65,26 @@ class MyHomePage extends StatelessWidget {
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Title'),
+                    onChanged: (val) {
+                      titleInput = val;
+                    },
                   ),
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Ammount'),
+                    onChanged: (val) => ammountInput = val,
                   ),
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Brand Name'),
+                    onChanged: (val) => brandInput = val,
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print(titleInput);
+                      print(ammountInput);
+                      print(brandInput);
+                    },
                     child: Text('Add Transaction'),
                     textColor: Colors.purple,
                   ),
