@@ -1,10 +1,6 @@
 //Flutter imports
-import 'package:expensesapp/widgets/new_transaction.dart';
+import './widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
-
-//my files
-import './widgets/Transactions_list.dart';
-import './widgets/new_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,47 +40,7 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
             ),
           ),
-          Card(
-            elevation: 5,
-            child: Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    autocorrect: true,
-                    decoration: InputDecoration(labelText: 'Title'),
-                    controller: titleController,
-                    //onChanged: (val) {
-                    //titleInput = val;
-                    //},
-                  ),
-                  TextField(
-                    autocorrect: true,
-                    decoration: InputDecoration(labelText: 'Ammount'),
-                    controller: ammountController,
-                    //onChanged: (val) => ammountInput = val,
-                  ),
-                  TextField(
-                    autocorrect: true,
-                    decoration: InputDecoration(labelText: 'Brand Name'),
-                    controller: brandNameControlller,
-                    //onChanged: (val) => brandInput = val,
-                  ),
-                  FlatButton(
-                    onPressed: () {
-                      print(titleController.text);
-                      print(ammountController.text);
-                      print(brandNameControlller.text);
-                    },
-                    child: Text('Add Transaction'),
-                    textColor: Colors.purple,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          NewTransaction(),
-          TansactionsList()
+          UserTransactions()
         ],
       ),
     );
