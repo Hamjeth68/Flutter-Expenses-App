@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
 //my files
 import './transaction.dart';
 
@@ -41,15 +41,42 @@ class MyHomePage extends StatelessWidget {
         title: Text('Expenses App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             width: double.infinity,
             child: Card(
               color: Colors.blue,
               child: Text('Chart'),
-              elevation: 10,
+              elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    autocorrect: true,
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    autocorrect: true,
+                    decoration: InputDecoration(labelText: 'Ammount'),
+                  ),
+                  TextField(
+                    autocorrect: true,
+                    decoration: InputDecoration(labelText: 'Brand Name'),
+                  ),
+                  FlatButton(
+                    onPressed: () {},
+                    child: Text('Add Transaction'),
+                    textColor: Colors.purple,
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
@@ -60,7 +87,7 @@ class MyHomePage extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.symmetric(
                         vertical: 15,
-                        horizontal: 20,
+                        horizontal: 10,
                       ),
                       decoration: BoxDecoration(
                         border: Border.all(color: Colors.purple, width: 2),
@@ -93,7 +120,7 @@ class MyHomePage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          tx.date.toString(),
+                          DateFormat.yMMMd().format(tx.date),
                           style: TextStyle(
                             color: Colors.blueGrey,
                             fontSize: 11,
