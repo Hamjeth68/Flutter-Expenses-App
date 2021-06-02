@@ -1,3 +1,4 @@
+//Flutter imports
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 //my files
@@ -17,27 +18,9 @@ class MyApp extends StatelessWidget {
 
 //soon this will change to a StatefulWidget
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: '01id',
-      title: 'Gaming LapTop',
-      ammount: 43.12,
-      date: DateTime.now(),
-      brandName: 'MSI',
-    ),
-    Transaction(
-      id: '02d',
-      title: 'Gaming Mouse',
-      ammount: 20.7,
-      date: DateTime.now(),
-      brandName: 'ROG',
-    )
-  ];
+  final List<Transaction> transactions = [];
 
-  //late String titleInput;
-  //late String ammountInput;
-  //late String brandInput;
-
+  //Controller properties
   final titleController = TextEditingController();
   final ammountController = TextEditingController();
   final brandNameControlller = TextEditingController();
@@ -52,6 +35,7 @@ class MyHomePage extends StatelessWidget {
         //mainAxisAlignment: MainAxisAlignment.start,
         //crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          //the chart
           Container(
             width: double.infinity,
             child: Card(
