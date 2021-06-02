@@ -34,9 +34,13 @@ class MyHomePage extends StatelessWidget {
     )
   ];
 
-  late String titleInput;
-  late String ammountInput;
-  late String brandInput;
+  //late String titleInput;
+  //late String ammountInput;
+  //late String brandInput;
+
+  final titleController = TextEditingController();
+  final ammountController = TextEditingController();
+  final brandNameControlller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -65,25 +69,28 @@ class MyHomePage extends StatelessWidget {
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Title'),
-                    onChanged: (val) {
-                      titleInput = val;
-                    },
+                    controller: titleController,
+                    //onChanged: (val) {
+                    //titleInput = val;
+                    //},
                   ),
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Ammount'),
-                    onChanged: (val) => ammountInput = val,
+                    controller: ammountController,
+                    //onChanged: (val) => ammountInput = val,
                   ),
                   TextField(
                     autocorrect: true,
                     decoration: InputDecoration(labelText: 'Brand Name'),
-                    onChanged: (val) => brandInput = val,
+                    controller: brandNameControlller,
+                    //onChanged: (val) => brandInput = val,
                   ),
                   FlatButton(
                     onPressed: () {
-                      print(titleInput);
-                      print(ammountInput);
-                      print(brandInput);
+                      print(titleController.text);
+                      print(ammountController.text);
+                      print(brandNameControlller.text);
                     },
                     child: Text('Add Transaction'),
                     textColor: Colors.purple,
