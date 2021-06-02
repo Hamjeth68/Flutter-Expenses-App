@@ -1,8 +1,10 @@
 //Flutter imports
+import 'package:expensesapp/widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
 
 //my files
 import './widgets/Transactions_list.dart';
+import './widgets/new_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -81,6 +83,7 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
           ),
+          NewTransaction(),
           TansactionsList()
         ],
       ),
