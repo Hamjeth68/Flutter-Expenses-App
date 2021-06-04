@@ -42,10 +42,7 @@ class TansactionsList extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       transcactions[index].title.toString(),
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.title,
                     ),
                     Text(
                       transcactions[index].brandName.toString(),

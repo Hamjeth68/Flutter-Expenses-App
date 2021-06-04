@@ -1,5 +1,7 @@
 //Flutter imports
 
+import 'dart:ui';
+
 import './widgets/new_transaction.dart';
 
 import './widgets/Transactions_list.dart';
@@ -16,6 +18,22 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 25,
+                ),
+              ),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -31,20 +49,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _userTransactions = [
-    Transaction(
-      id: '01id',
-      title: 'Gaming LapTop',
-      ammount: 43.12,
-      date: DateTime.now(),
-      brandName: 'MSI',
-    ),
-    Transaction(
-      id: '02d',
-      title: 'Gaming Mouse',
-      ammount: 20.7,
-      date: DateTime.now(),
-      brandName: 'ROG',
-    )
+    // Transaction(
+    //   id: '01id',
+    //   title: 'Gaming LapTop',
+    //   ammount: 43.12,
+    //   date: DateTime.now(),
+    //   brandName: 'MSI',
+    // ),
+    // Transaction(
+    //   id: '02d',
+    //   title: 'Gaming Mouse',
+    //   ammount: 20.7,
+    //   date: DateTime.now(),
+    //   brandName: 'ROG',
+    // )
   ];
 
 //addMthod
