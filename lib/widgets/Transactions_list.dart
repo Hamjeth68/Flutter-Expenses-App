@@ -6,16 +6,16 @@ import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 
 class TansactionsList extends StatelessWidget {
-  final List<Transaction> transcaction;
+  final List<Transaction> transcactions;
 
-  TansactionsList(this.transcaction);
+  TansactionsList(this.transcactions);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView(
-        children: transcaction.map((tx) {
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
           return Card(
             child: Row(
               children: <Widget>[
@@ -29,7 +29,7 @@ class TansactionsList extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$${tx.ammount}',
+                    '\$${transcactions[index].ammount.toStringAsFixed(2)}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
@@ -41,21 +41,21 @@ class TansactionsList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      tx.title.toString(),
+                      transcactions[index].title.toString(),
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      tx.brandName.toString(),
+                      transcactions[index].brandName.toString(),
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      DateFormat.yMMMd().format(tx.date),
+                      DateFormat.yMMMd().format(transcactions[index].date),
                       style: TextStyle(
                         color: Colors.blueGrey,
                         fontSize: 11,
@@ -66,7 +66,8 @@ class TansactionsList extends StatelessWidget {
               ],
             ),
           );
-        }).toList(),
+        },
+        itemCount: transcactions.length,
       ),
     );
   }

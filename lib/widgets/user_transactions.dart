@@ -30,6 +30,7 @@ class _UserTransactionsState extends State<UserTransactions> {
     )
   ];
 
+//addMthod
   void _addNewTransaction(String txTitle, double txAmmount, String txBrand) {
     final newTx = Transaction(
       title: txTitle,
