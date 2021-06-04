@@ -1,11 +1,9 @@
 //Flutter imports
-
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 import './widgets/new_transaction.dart';
 
 import './widgets/Transactions_list.dart';
-import 'package:flutter/material.dart';
 import './models/transaction.dart';
 
 void main() => runApp(MyApp());
