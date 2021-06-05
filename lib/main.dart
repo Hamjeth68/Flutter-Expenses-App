@@ -5,6 +5,7 @@ import './widgets/new_transaction.dart';
 
 import './widgets/Transactions_list.dart';
 import './models/transaction.dart';
+import './widgets/chart.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,7 +41,6 @@ class MyApp extends StatelessWidget {
 
 //soon this will change to a StatefulWidget
 class MyHomePage extends StatefulWidget {
-  //Controller properties
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -62,6 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
     //   brandName: 'ROG',
     // )
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _userTransactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
+  }
 
 //addMthod
   void _addNewTransaction(String txTitle, double txAmmount, String txBrand) {
@@ -108,14 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             //the chart
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Colors.blue,
-                child: Text('Chart'),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             TansactionsList(_userTransactions),
           ],
         ),

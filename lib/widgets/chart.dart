@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/transaction.dart';
 
@@ -13,10 +14,17 @@ class Chart extends StatelessWidget {
         Duration(days: index),
       );
 
-      double totalSum;
+      var totalSum = 0.0;
 
-      for (var i = 0; i < recentTransactions.length; i++) {}
-      return {'day': 'T', 'amount': 9.99};
+      for (var i = 0; i < recentTransactions.length; i++) {
+        if (recentTransactions[i].date.day == weekDay.day &&
+            recentTransactions[i].date.month == weekDay &&
+            recentTransactions[i].date.year == weekDay) {
+          totalSum += recentTransactions[i].ammount;
+        }
+      }
+
+      return {'day': DateFormat.E().format(weekDay), 'amount': totalSum};
     });
   }
 
