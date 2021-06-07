@@ -32,14 +32,27 @@ class Chart extends StatelessWidget {
     });
   }
 
+  double get totalmaxSpending {
+    return groupedTransactionValues.fold(0.0, (sum, item) {
+      return sum + (item['ammount'] as double);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: groupedTransactionValues.map((data) {
-          return ChartBar(data['day'], data['ammount'], speingPcOfTotal);
+          return ChartBar(
+            data['day'].toString(),
+            (data['ammount'] as double),
+            totalmaxSpending == 0.0
+                ? 0.0
+                : (data['ammount'] as double) / totalmaxSpending,
+          );
         }).toList(),
       ),
     );
