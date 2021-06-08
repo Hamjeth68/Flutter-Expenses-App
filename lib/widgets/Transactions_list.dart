@@ -14,7 +14,7 @@ class TansactionsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 500,
       child: transcactions.isEmpty
           ? Column(
               children: <Widget>[
@@ -34,7 +34,7 @@ class TansactionsList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
-                  elevation: 5,
+                  elevation: 6,
                   margin: EdgeInsets.symmetric(
                     vertical: 8,
                     horizontal: 5,
