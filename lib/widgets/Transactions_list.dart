@@ -1,4 +1,5 @@
 //flutter imports
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -33,51 +34,28 @@ class TansactionsList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                          vertical: 15,
-                          horizontal: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).primaryColor, width: 2),
-                        ),
-                        padding: EdgeInsets.all(10),
-                        child: Text(
-                          '\$${transcactions[index].ammount.toStringAsFixed(2)}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                              color: Theme.of(context).primaryColor),
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(
+                    vertical: 8,
+                    horizontal: 5,
+                  ),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      child: Padding(
+                        padding: EdgeInsets.all(6),
+                        child: FittedBox(
+                          child: Text('\$${transcactions[index].ammount}'),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            transcactions[index].title.toString(),
-                            style: Theme.of(context).textTheme.title,
-                          ),
-                          Text(
-                            transcactions[index].brandName.toString(),
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            DateFormat.yMMMd()
-                                .format(transcactions[index].date),
-                            style: TextStyle(
-                              color: Colors.blueGrey,
-                              fontSize: 11,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                    ),
+                    title: Text(
+                      transcactions[index].title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMd().format(transcactions[index].date),
+                    ),
                   ),
                 );
               },
