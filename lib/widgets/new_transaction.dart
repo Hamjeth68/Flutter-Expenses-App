@@ -17,7 +17,7 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final brandNameControlller = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmmount = double.parse(ammountController.text);
     final enteredBrandName = brandNameControlller.text;
@@ -34,6 +34,15 @@ class _NewTransactionState extends State<NewTransaction> {
     Navigator.of(context).pop();
   }
 
+  void _presentDateTimePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime.now(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -46,7 +55,7 @@ class _NewTransactionState extends State<NewTransaction> {
               autocorrect: true,
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => _submitData,
               //onChanged: (val) {
               //titleInput = val;
               //},
@@ -56,14 +65,14 @@ class _NewTransactionState extends State<NewTransaction> {
               decoration: InputDecoration(labelText: 'Ammount'),
               controller: ammountController,
               keyboardType: TextInputType.number,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => _submitData,
               //onChanged: (val) => ammountInput = val,
             ),
             TextField(
               autocorrect: true,
               decoration: InputDecoration(labelText: 'Brand Name'),
               controller: brandNameControlller,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => _submitData,
               //onChanged: (val) => brandInput = val,
             ),
             Container(
@@ -72,7 +81,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 children: <Widget>[
                   Text('No Date Chosen!'),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: _presentDateTimePicker,
                     child: Text(
                       'Chose Date',
                       style: TextStyle(fontWeight: FontWeight.bold),
@@ -83,10 +92,10 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
             ),
             RaisedButton(
-              onPressed: submitData,
+              onPressed: _submitData,
               child: Text('Add Transaction'),
               color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).textTheme.button.color,
+              textColor: Theme.of(context).textTheme.button!.color,
             ),
           ],
         ),
