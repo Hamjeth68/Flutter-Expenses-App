@@ -1,5 +1,6 @@
 //flutter imports
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function addTx;
@@ -11,16 +12,15 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final titleController = TextEditingController();
-
-  final ammountController = TextEditingController();
-
-  final brandNameControlller = TextEditingController();
+  final _titleController = TextEditingController();
+  final _ammountController = TextEditingController();
+  final _brandNameControlller = TextEditingController();
+  DateTime _selectedDate;
 
   void _submitData() {
-    final enteredTitle = titleController.text;
-    final enteredAmmount = double.parse(ammountController.text);
-    final enteredBrandName = brandNameControlller.text;
+    final enteredTitle = _titleController.text;
+    final enteredAmmount = double.parse(_ammountController.text);
+    final enteredBrandName = _brandNameControlller.text;
 
     if (enteredTitle.isEmpty || enteredAmmount <= 0) {
       return;
@@ -40,7 +40,14 @@ class _NewTransactionState extends State<NewTransaction> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime.now(),
-    );
+    ).then((pickedDate) {
+      if (pickedDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedDate = pickedDate;
+      });
+    });
   }
 
   @override
@@ -54,7 +61,7 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               autocorrect: true,
               decoration: InputDecoration(labelText: 'Title'),
-              controller: titleController,
+              controller: _titleController,
               onSubmitted: (_) => _submitData,
               //onChanged: (val) {
               //titleInput = val;
@@ -63,7 +70,7 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               autocorrect: true,
               decoration: InputDecoration(labelText: 'Ammount'),
-              controller: ammountController,
+              controller: _ammountController,
               keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData,
               //onChanged: (val) => ammountInput = val,
@@ -71,7 +78,7 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               autocorrect: true,
               decoration: InputDecoration(labelText: 'Brand Name'),
-              controller: brandNameControlller,
+              controller: _brandNameControlller,
               onSubmitted: (_) => _submitData,
               //onChanged: (val) => brandInput = val,
             ),
@@ -79,7 +86,10 @@ class _NewTransactionState extends State<NewTransaction> {
               height: 70,
               child: Row(
                 children: <Widget>[
-                  Text('No Date Chosen!'),
+                  // ignore: unnecessary_null_comparison
+                  Text(_selectedDate == null
+                      ? 'No Date Chosen'
+                      : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}'),
                   FlatButton(
                     onPressed: _presentDateTimePicker,
                     child: Text(
