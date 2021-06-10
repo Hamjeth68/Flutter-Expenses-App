@@ -20,11 +20,14 @@ class _NewTransactionState extends State<NewTransaction> {
   DateTime? _selectedDate;
 
   void _submitData() {
+    if (_ammountController.text.isEmpty) {
+      return;
+    }
     final enteredTitle = _titleController.text;
     final enteredAmmount = double.parse(_ammountController.text);
     final enteredBrandName = _brandNameControlller.text;
 
-    if (enteredTitle.isEmpty || enteredAmmount <= 0) {
+    if (enteredTitle.isEmpty && enteredAmmount <= 0 || _selectedDate == null) {
       return;
     }
 
@@ -32,6 +35,7 @@ class _NewTransactionState extends State<NewTransaction> {
       enteredTitle,
       enteredAmmount,
       enteredBrandName,
+      _selectedDate,
     );
     Navigator.of(context).pop();
   }
@@ -88,16 +92,21 @@ class _NewTransactionState extends State<NewTransaction> {
               height: 70,
               child: Row(
                 children: <Widget>[
-                  Text(_selectedDate == null
-                      ? 'No Date Chosen'
-                      : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}'),
-                  FlatButton(
-                    onPressed: _presentDateTimePicker,
-                    child: Text(
-                      'Chose Date',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                  Expanded(
+                    child: Text(_selectedDate == null
+                        ? 'No Date Chosen'
+                        : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}'),
+                  ),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    child: FlatButton(
+                      onPressed: _presentDateTimePicker,
+                      child: Text(
+                        'Chose Date',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      textColor: Theme.of(context).primaryColor,
                     ),
-                    textColor: Theme.of(context).primaryColor,
                   ),
                 ],
               ),

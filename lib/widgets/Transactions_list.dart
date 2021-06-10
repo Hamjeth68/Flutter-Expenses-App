@@ -56,6 +56,11 @@ class TansactionsList extends StatelessWidget {
                     subtitle: Text(
                       DateFormat.yMMMd().format(transcactions[index].date),
                     ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () {},
+                    ),
                   ),
                 );
               },

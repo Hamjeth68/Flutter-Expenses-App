@@ -75,12 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 //addMthod
-  void _addNewTransaction(String txTitle, double txAmmount, String txBrand) {
+  void _addNewTransaction(
+      String txTitle, double txAmmount, String txBrand, DateTime chosenDate) {
     final newTx = Transaction(
       title: txTitle,
       ammount: txAmmount,
       brandName: txBrand,
-      date: DateTime.now(),
+      date: chosenDate,
       id: DateTime.now().toString(),
     );
 
