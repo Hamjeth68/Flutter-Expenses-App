@@ -129,11 +129,13 @@ class _MyHomePageState extends State<MyHomePage> {
             //the chart
             Container(
                 height: (MediaQuery.of(context).size.height * 0.4 -
-                    appBar.preferredSize.height),
+                    appBar.preferredSize.height -
+                    MediaQuery.of(context).padding.top),
                 child: Chart(_recentTransactions)),
             Container(
                 height: (MediaQuery.of(context).size.height * 0.6 -
-                    appBar.preferredSize.height),
+                    appBar.preferredSize.height -
+                    MediaQuery.of(context).padding.top),
                 child: TansactionsList(_userTransactions, deletetransaction)),
           ],
         ),
